@@ -11,7 +11,7 @@ const fileName = await input({
   message: '请输入文件名称',
   validate: (value) => {
     if (!isFileNameSafe(value)) {
-      return '文件名只能包含字母、数字和连字符'
+      return '文件名只能包含小写字母、数字和连字符'
     }
     const fullPath = getPostFullPath(value)
     if (fs.existsSync(fullPath)) {
