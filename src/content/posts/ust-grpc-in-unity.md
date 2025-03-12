@@ -1,12 +1,16 @@
 ---
 title: 在unity中使用grpc
 date: 2025-03-07T05:52:05.929Z
-tags: []
+tags: [Unity, Grpc]
 comments: true
 draft: false
 ---
 
 # 在Unity中使用grpc
+
+## 2025/3/12更新
+
+经过测试，下述方案在win平台和android平台可以正常运行，webgl平台则完全不行。因为webgl平台的程序为单线程运行，grpc.net库的实现强依赖于.net的httpClient进行网络通信，因此异步grpc会完全阻塞线程，同步grpc也会出现报错。因此如果有需要在webgl项目中使用grpc功能，不如直接在js部分接入[grpc的web端实现](https://github.com/grpc/grpc-web)，将调用结果再转发给unity部分。（吐槽：虽然grpc.net.clinet.web这个插件名字里带有web，却不支持在webgl平台运行呢。）
 
 ## 前言
 
